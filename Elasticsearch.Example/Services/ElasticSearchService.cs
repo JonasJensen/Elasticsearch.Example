@@ -52,7 +52,7 @@ namespace Elasticsearch.Example.Services
             {
                 Total = (int)result.Total,
                 Page = page,
-                Results = result.Documents,
+                Results = result.Hits.Select(hit => new SearchResultItem<Post>(hit.Source, hit.Score)),
                 ElapsedMilliseconds = result.Took,
                 AggregationsByTags = result.Aggs.Terms("by_tags").Buckets.ToDictionary(x => x.Key, y => y.DocCount.GetValueOrDefault(0))
             };
@@ -114,7 +114,7 @@ namespace Elasticsearch.Example.Services
             {
                 Total = (int)result.Total,
                 Page = page,
-                Results = result.Documents,
+                Results = result.Hits.Select(hit => new SearchResultItem<Post>(hit.Source, hit.Score)),
                 ElapsedMilliseconds = result.Took,
                 AggregationsByTags = result.Aggs.Terms("by_tags").Buckets.ToDictionary(x => x.Key, y => y.DocCount.GetValueOrDefault(0))
             };

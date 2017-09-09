@@ -8,7 +8,7 @@ namespace Elasticsearch.Example.Models
 
         public int Page { get; set; }
 
-        public IEnumerable<T> Results { get; set; }
+        public IEnumerable<SearchResultItem<T>> Results { get; set; }
 
         public long ElapsedMilliseconds { get; set; }
 

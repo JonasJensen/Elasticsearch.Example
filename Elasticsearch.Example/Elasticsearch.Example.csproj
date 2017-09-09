@@ -135,6 +135,7 @@
     <Compile Include="Domain\Models\User.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\SearchResultItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ElasticConfig.cs" />
     <Compile Include="Services\ElasticIndexService.cs" />

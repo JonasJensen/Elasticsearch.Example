@@ -53,25 +53,30 @@
                 </div>
             </div>
             <div class="col-xs-9 col-sm-offset-1">
-                <div class="row margin-bottom-small" ng-repeat="item in items" ng-hide="isLoading">
+                <div class="row margin-bottom-small" ng-repeat="result in results" ng-hide="isLoading">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                    <h3>{{item.Title}}</h3>
+                                <h3>{{result.Item.Title}}</h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div ng-bind-html="item.Body | to_trusted"></div>
+                                <div ng-bind-html="result.Item.Body | to_trusted"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
-                                <span ng-repeat="tag in item.Tags" class="label label-primary">{{tag}}</span>
+                                <span ng-repeat="tag in result.Item.Tags" class="label label-primary">{{tag}}</span>
                             </div>
                             <div class="col-md-4 text-right">
-                                <small>Votes: <span class="label label-info label-round">{{item.Score}}</span></small>
-                                <small>Answers: <span class="label label-info label-round">{{item.AnswerCount}}</span></small>
+                                <small>Votes: <span class="label label-info label-round">{{result.Item.Score}}</span></small>
+                                <small>Answers: <span class="label label-info label-round">{{result.Item.AnswerCount}}</span></small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <small>{{result.Score}}</small>
                             </div>
                         </div>
                     </div>

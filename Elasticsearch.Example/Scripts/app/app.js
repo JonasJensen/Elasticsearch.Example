@@ -11,10 +11,10 @@
         var search = function () {
             $http.get("/api/search?q=" + $scope.query).success(function (data) {
                 $scope.isLoading = false;
-                $scope.items = data.Results;
+                $scope.results = data.Results;
                 $scope.aggs = data.AggregationsByTags;
                 $scope.total = 0;
-                if (data.Results.length == 0)
+                if (data.Results.length === 0)
                     $scope.message = "no results";
                 else {
                     $scope.total = data.Total;
@@ -30,7 +30,7 @@
         var searchByCategory = function () {
             $http.post("/api/searchbycategory", { "q": $scope.query, "categories": activeFilters }).success(function (data) {
                 $scope.isLoading = false;
-                $scope.items = data.Results;
+                $scope.results = data.Results;
                 $scope.aggs = data.AggregationsByTags;
                 $scope.total = 0;
                 if (data.Results.length === 0)
@@ -104,7 +104,7 @@
                 size: size,
                 resolve: {
                     items: function () {
-                        return $scope.items;
+                        return $scope.results;
                     }
                 }
             });
