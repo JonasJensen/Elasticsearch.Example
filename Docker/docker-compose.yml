@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  node:
+    build: elasticsearch/
+    container_name: node
+    environment:
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "xpack.security.enabled=false"
+    ports:
+      - 9200:9200
+      - 9300:9300   
+    volumes:
+      - node:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK      
+    networks:
+      - esnet
+
+  kibana:
+    build: kibana/
+    container_name: kibana
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+    depends_on:
+      - node
+
+volumes:
+  node:
+    driver: local
+
+networks:
+  esnet:
+    driver: bridge

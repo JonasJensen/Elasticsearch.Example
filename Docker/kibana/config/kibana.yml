@@ -1,0 +1,8 @@
+---
+## Default Kibana configuration from kibana-docker.
+## from https://github.com/elastic/kibana-docker/blob/master/build/kibana/config/kibana.yml
+#
+server.name: kibana
+server.host: "0"
+#The url of the cluster. In this case a single node. The url is the docker name of the node (see Dockerfile).
+elasticsearch.url: http://node:9200

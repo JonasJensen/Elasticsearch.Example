@@ -1,0 +1,11 @@
+cluster.name: "elasticsearch-cluster"
+node.name: "node"
+#The node can be master and keep the state of the cluster
+node.master: true
+#The node can handle data
+node.data: true
+#The node will ingest for example attachments.
+node.ingest: true
+bootstrap.memory_lock: true
+http.host: 0.0.0.0
+transport.host: 127.0.0.1
